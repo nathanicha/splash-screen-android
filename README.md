@@ -5,3 +5,5 @@
 - Set ic_launcher Application
 - Set delay time 
 - Log version app, version name
+
+![](gif_splash.gif)
