@@ -3,8 +3,10 @@ package com.example.nutlwd.splashscreen.module
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.akexorcist.localizationactivity.core.LanguageSetting.setLanguage
 import com.chibatching.kotpref.Kotpref
+import com.example.nutlwd.splashscreen.BuildConfig
 import com.example.nutlwd.splashscreen.R
 import com.example.nutlwd.splashscreen.base.BaseActivity
 import com.example.nutlwd.splashscreen.utils.SingletonUtils
@@ -20,7 +22,15 @@ class SplashActivity : AppCompatActivity() {
         Kotpref.init(this)
 
         setLang()
+        getVersionOfApp()
         onNavigationToMainActivity()
+    }
+
+    private fun getVersionOfApp() {
+        var versionCode = BuildConfig.VERSION_CODE
+        var versionName = BuildConfig.VERSION_NAME
+
+        Log.d("version of application"," versionCode $versionCode \nversionName $versionName")
     }
 
     private fun onNavigationToMainActivity() {
