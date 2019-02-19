@@ -7,18 +7,18 @@ import android.util.Log
 import com.akexorcist.localizationactivity.core.LanguageSetting.setLanguage
 import com.chibatching.kotpref.Kotpref
 import com.example.nutlwd.splashscreen.BuildConfig
-import com.example.nutlwd.splashscreen.R
-import com.example.nutlwd.splashscreen.base.BaseActivity
 import com.example.nutlwd.splashscreen.utils.SingletonUtils
 import java.util.*
+import android.os.Handler
 
 class SplashActivity : AppCompatActivity() {
 
     var context = this
+    private var SPLASH_TIME_OUT = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(com.example.nutlwd.splashscreen.R.layout.activity_splash)
         Kotpref.init(this)
 
         setLang()
@@ -34,9 +34,15 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun onNavigationToMainActivity() {
-        val intent = Intent(context,MainActivity::class.java)
-        startActivity(intent)
-        finish()
+//        val intent = Intent(context,MainActivity::class.java)
+//        startActivity(intent)
+//        finish()
+
+        Handler().postDelayed({
+            val intent = Intent(context,MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, SPLASH_TIME_OUT.toLong())
     }
 
     private fun setLang(){
